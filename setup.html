@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>📔 Diary - Setup Awal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-1: #04040b;
+      --bg-2: #00122a;
+      --accent: #00e5ff;
+      --accent2: #ff00d0;
+      --text: #e6f7ff;
+      --muted: #8fa3b3;
+      --success: #00ff88;
+      --error: #ff6b6b;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(0,229,255,0.05), rgba(255,0,208,0.02));
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,229,255,0.1);
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 30px;
+      font-size: 0.95em;
+    }
+
+    .info-box {
+      background: rgba(0,229,255,0.1);
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 0.9em;
+      color: var(--text);
+    }
+
+    .info-box strong {
+      color: var(--accent);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.3);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      background: rgba(0,229,255,0.12);
+      border-color: rgba(0,229,255,0.6);
+      box-shadow: 0 0 12px rgba(0,229,255,0.2);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      flex: 1;
+      min-width: 120px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(255,0,208,0.1));
+      border: 1px solid rgba(0,229,255,0.4);
+      border-radius: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, rgba(0,229,255,0.35), rgba(255,0,208,0.15));
+      border-color: rgba(0,229,255,0.7);
+      box-shadow: 0 4px 16px rgba(0,229,255,0.25);
+    }
+
+    .steps {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(0,229,255,0.2);
+    }
+
+    .step {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(0,229,255,0.03);
+      border-left: 3px solid rgba(0,229,255,0.3);
+      border-radius: 4px;
+    }
+
+    .step-number {
+      background: var(--accent);
+      color: var(--bg-1);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .step-title {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .step-desc {
+      color: var(--muted);
+      font-size: 0.9em;
+    }
+
+    .sharing-link {
+      background: rgba(0,255,136,0.05);
+      border: 1px solid rgba(0,255,136,0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .sharing-link-title {
+      color: var(--success);
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 0.85em;
+      letter-spacing: 0.5px;
+    }
+
+    .link-input {
+      display: flex;
+      gap: 10px;
+    }
+
+    .link-input input {
+      flex: 1;
+    }
+
+    .link-input button {
+      min-width: auto;
+      padding: 12px 16px;
+    }
+
+    code {
+      background: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: var(--accent2);
+    }
+
+    @media (max-width: 512px) {
+      .card {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>📔 DIARY SETUP</h1>
+      <p class="subtitle">Buat atau akses diary Anda</p>
+
+      <div class="form-group">
+        <label for="diaryId">📝 ID Diary (Nama atau ID unik)</label>
+        <input type="text" id="diaryId" placeholder="Misal: my-diary-2024, john-doc, dkk">
+      </div>
+
+      <div class="form-group">
+        <label for="setupPassword">🔐 Password Admin</label>
+        <input type="password" id="setupPassword" placeholder="Minimal 6 karakter">
+      </div>
+
+      <div class="button-group">
+        <button id="createBtn">✨ BUAT DIARY BARU</button>
+        <button id="accessBtn">→ AKSES DIARY</button>
+      </div>
+
+      <div class="sharing-link" id="sharingSection" style="display: none;">
+        <div class="sharing-link-title">✨ Share Link ke Pengunjung</div>
+        <div class="link-input">
+          <input type="text" id="shareLink" readonly>
+          <button onclick="copyToClipboard()">📋 COPY</button>
+        </div>
+        <p style="margin-top: 10px; color: var(--muted); font-size: 0.9em;">
+          Bagikan link di atas ke orang lain untuk membaca diary Anda.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-title">Setup Awal</div>
+          <div class="step-desc">Masukkan ID diary dan password pilihan Anda</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title">Admin Panel</div>
+          <div class="step-desc">Upload cerita dan foto Anda</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">Share Link</div>
+          <div class="step-desc">Bagikan link publik ke teman/keluarga</div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 30px;">
+        <strong>💡 Petunjuk:</strong>
+        <ul style="margin-left: 15px; margin-top: 10px; line-height: 1.6;">
+          <li>Setiap diary punya password admin terpisah</li>
+          <li>Data disimpan secara aman di localStorage browser Anda</li>
+          <li>Share link publik untuk pengunjung tanpa password</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cek apakah ada diary ID di URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedDiaryId = urlParams.get('diary');
+    const isPublic = urlParams.get('public') === 'true';
+
+    if (sharedDiaryId && isPublic) {
+      window.location.href = `diary-public.html?diary=${encodeURIComponent(sharedDiaryId)}`;
+      throw new Error('Redirect...');
+    }
+
+    document.getElementById('createBtn').addEventListener('click', function() {
+      const diaryId = document.getElementById('diaryId').value.trim();
+      const password = document.getElementById('setupPassword').value.trim();
+
+      if (!diaryId) {
+        alert('❌ ID Diary tidak boleh kosong!');
+        return;
+      }
+
+      if (!password || password.length < 6) {
+        alert('❌ Password minimal 6 karakter!');
+        return;
+      }
+
+      // Save to localStorage
+      localStorage.setItem('activeDiaryId', diaryId);
+      localStorage.setItem(`${diaryId}_password`, password);
+      localStorage.setItem(`${diaryId}_entries`, JSON.stringify([]));
+
+      // Show sharing link
+      const shareUrl = window.location.origin + window.location.pathname + 
+                      `setup.html?diary=${encodeURIComponent(diaryId)}&public=true`;
+      document.getElementById('shareLink').value = shareUrl;
+      document.getElementById('sharingSection').style.display = 'block';
+
+      alert('✅ Diary berhasil dibuat! Share link di bawah ke orang lain.');
+      
+      // Go to admin panel
+      setTimeout(() => {
+        window.location.href = `diary-admin.html?diary=${encodeURIComponent(diaryId)}`;
+      }, 1000);
+    });
+
+    document.getElementById('accessBtn').addEventListener('click', function() {
+      const diaryId = document.getElementById('diaryId').value.trim();
+      const password = document.getElementById('setupPassword').value.trim();
+
+      if (!diaryId) {
+        alert('❌ ID Diary tidak boleh kosong!');
+        return;
+      }
+
+      // Verify password
+      const storedPassword = localStorage.getItem(`${diaryId}_password`);
+      if (!storedPassword) {
+        alert('❌ Diary dengan ID ini tidak ditemukan!');
+        return;
+      }
+
+      if (storedPassword !== password) {
+        alert('❌ Password salah!');
+        return;
+      }
+
+      localStorage.setItem('activeDiaryId', diaryId);
+      window.location.href = `diary-admin.html?diary=${encodeURIComponent(diaryId)}`;
+    });
+
+    function copyToClipboard() {
+      const text = document.getElementById('shareLink').value;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✅ Link copied to clipboard!');
+      });
+    }
+
+    // Auto-fill dari URL jika ada
+    if (sharedDiaryId) {
+      document.getElementById('diaryId').value = sharedDiaryId;
+    }
+  </script>
+</body>
+</html>
